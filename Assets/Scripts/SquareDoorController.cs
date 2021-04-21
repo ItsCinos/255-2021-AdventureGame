@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorController : MonoBehaviour
+public class SquareDoorController : MonoBehaviour
 {
     public Transform doorArt;
 
@@ -49,7 +49,7 @@ public class DoorController : MonoBehaviour
     {
         if (animIsPlaying) return;
 
-        if (!Inventory.main.hasCircleKey) return;
+        if (!Inventory.main.hasSquareKey) return;
 
         Vector3 disToPlayer = position - transform.position;
         disToPlayer = disToPlayer.normalized;

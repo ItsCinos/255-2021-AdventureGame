@@ -27,8 +27,14 @@ public class Raycaster : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                DoorController door = hit.transform.GetComponentInParent<DoorController>();
-                if (door != null) door.PlayerInteract(transform.parent.position);
+                CircleDoorController circleDoor = hit.transform.GetComponentInParent<CircleDoorController>();
+                if (circleDoor != null) circleDoor.PlayerInteract(transform.parent.position);
+
+                SquareDoorController squareDoor = hit.transform.GetComponentInParent<SquareDoorController>();
+                if (squareDoor != null) squareDoor.PlayerInteract(transform.parent.position);
+
+                TriangleDoorController triangleDoor = hit.transform.GetComponentInParent<TriangleDoorController>();
+                if (triangleDoor != null) triangleDoor.PlayerInteract(transform.parent.position);
 
                 ItemPickup pickup = hit.transform.GetComponent<ItemPickup>();
                 if (pickup != null) pickup.PlayerInteract();
