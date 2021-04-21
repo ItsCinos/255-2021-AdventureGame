@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 2;
     public float mouseSensitivityX = 10;
     public float mouseSensitivityY = 10;
+    public float controllerSensX = 0.5f;
+    public float controllerSensY = -0.5f;
 
     private CharacterController pawn;
     private Camera cam;
@@ -26,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         MovePlayer();
+        AimWithController();
         TurnPlayer();
     }
 
@@ -65,5 +68,24 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 speed = (transform.right * h + transform.forward * v) * moveSpeed;
         pawn.SimpleMove(speed);
+    }
+
+    private void AimWithController()
+    {
+        float h = Input.GetAxis("Aim Horizontal");
+        float v = Input.GetAxis("Aim Vertical");
+
+        transform.Rotate(0, h * controllerSensX, 0); //turn player left and right
+
+        //cam.transform.Rotate(v * mouseSensitivityY, 0, 0);
+
+        cameraPitch += v * controllerSensY;
+
+        if (cameraPitch < -80) cameraPitch = -80;
+        if (cameraPitch > 80) cameraPitch = 80;
+
+        cameraPitch = Mathf.Clamp(cameraPitch, -80, 80);
+
+        cam.transform.localRotation = Quaternion.Euler(cameraPitch, 0, 0);
     }
 }

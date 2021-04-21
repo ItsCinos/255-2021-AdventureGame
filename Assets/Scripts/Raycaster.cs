@@ -18,8 +18,7 @@ public class Raycaster : MonoBehaviour
 
 
         if (cam != null && Input.GetButtonDown("Fire1"))
-        {
-
+        {            
             Ray ray = new Ray(cam.transform.position, cam.transform.forward);
             RaycastHit hit;
 
