@@ -32,6 +32,11 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("AboutScreen");
     }
 
+    public void BackButtonPressed()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
     public void QuitButtonPressed()
     {
         Application.Quit();
