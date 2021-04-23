@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Inventory : MonoBehaviour
 {
@@ -28,6 +29,15 @@ public class Inventory : MonoBehaviour
         else
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void Update()
+    {
+        if (hasDino)
+        {
+            SceneManager.LoadScene("EndScene");
+            hasDino = false;
         }
     }
 }
